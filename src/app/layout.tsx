@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { WEBSITE_HOST_URL } from "./contants";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Providers } from "./providers";
+import { fonts } from "./font";
 
 const meta = {
     title: "Title",
@@ -80,7 +79,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>{children}</body>
+            <body className={fonts.rubik.variable}>
+                <Providers>{children}</Providers>
+            </body>
         </html>
     );
 }

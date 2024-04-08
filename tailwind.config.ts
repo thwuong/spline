@@ -16,6 +16,9 @@ const config: Config = {
             fontFamily: {
                 inter: ["Inter", ...defaultTheme.fontFamily.sans],
             },
+            spacing: {
+                standard: "1440px",
+            },
         },
     },
     plugins: [],
