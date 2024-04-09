@@ -8,9 +8,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     let articles = await getAllArticles();
     const changeFrequency = "daily" as changeFrequency;
 
-    const posts = articles.map(({ slug, date }) => ({
-        url: `${WEBSITE_HOST_URL}/posts/${slug}`,
-        lastModified: date,
+    const posts = articles.map(({ id }: { id: string }) => ({
+        url: `${WEBSITE_HOST_URL}/posts/${id}`,
+        lastModified: new Date(),
         changeFrequency,
     }));
 
