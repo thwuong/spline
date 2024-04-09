@@ -1,13 +1,10 @@
-export const getAllArticles = () => {
-    return [
-        {
-            slug: "abc",
-            date: "1-1-1911",
-        },
-        {
-            slug: "123",
-            date: "1-1-1920",
-        },
-    ];
+export const getAllArticles = async () => {
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts/");
+        return await response.json();
+    } catch (error) {
+        console.error("Database Error:", error);
+        throw new Error("Failed to fetch invoice.");
+    }
 };
 // Replace API

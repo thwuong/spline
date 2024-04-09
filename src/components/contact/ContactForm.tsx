@@ -1,3 +1,4 @@
+"use client";
 import { Button, FormControl, FormErrorMessage, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -25,7 +26,7 @@ function ContactForm() {
                     placeholder="name"
                     {...register("name", {
                         validate: () => {
-                            return false;
+                            return "valid name";
                         },
                     })}
                 />

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import { WEBSITE_HOST_URL } from "./contants";
-import { Providers } from "./providers";
 import { fonts } from "./font";
+import "./globals.css";
+import Loading from "./loading";
+import { Providers } from "./providers";
 
 const meta = {
     title: "Title",
@@ -71,6 +74,8 @@ export const metadata: Metadata = {
         },
     },
 };
+const Header = dynamic(() => import("@/components/layout/Header"));
+const Footer = dynamic(() => import("@/components/layout/Footer"));
 
 export default function RootLayout({
     children,
@@ -80,7 +85,13 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={fonts.rubik.variable}>
-                <Providers>{children}</Providers>
+                <Suspense fallback={<Loading />}>
+                    <Providers>
+                        <Header />
+                        {children}
+                        <Footer />
+                    </Providers>
+                </Suspense>
             </body>
         </html>
     );
