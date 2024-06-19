@@ -1,13 +1,10 @@
-import Container from "@/components/container/Container";
-import Title from "@/components/text/Title";
-import { getAllArticles } from "@/lib/articles";
+import dynamic from "next/dynamic";
+
+const SplineCom = dynamic(() => import("@/components/SplineCom"));
 export default async function Home() {
-    const data: [] = await getAllArticles();
     return (
-        <main>
-            <Container>
-                <Title>Hello world</Title>
-            </Container>
+        <main className="h-screen">
+            <SplineCom />
         </main>
     );
 }
